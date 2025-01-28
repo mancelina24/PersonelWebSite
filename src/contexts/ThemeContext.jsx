@@ -1,3 +1,4 @@
 import { createContext } from "react";
+import useLocalStorage from "../hooks/useLocalStorage";
 
-export const LanguageContext = createContext();
+export const ThemeContext = createContext();
