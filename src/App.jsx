@@ -7,16 +7,29 @@ import Projects from "./components/Projects.jsx";
 import Profile from "./components/Profile.jsx";
 import Footer from "./components/Footer.jsx";
 function App() {
-  const { darkMode } = useContext(UserContext);
+  const { darkMode, language } = useContext(UserContext);
+
+  const languageClass =
+    language === "turkish" ? "lang-turkish" : "lang-english";
+  const darkModeClass = darkMode ? "dark" : "";
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      <Hero />
-      <Skills />
-      <Profile />
-      <Projects />
-      <Footer />
+      <div className={`${darkModeClass} ${languageClass}`}>
+        <div
+          className={`min-h-screen bg-white ${
+            darkMode
+              ? "dark:bg-gray-900 dark:text-white"
+              : "bg-white text-black"
+          }`}
+        >
+          <Hero />
+          <Skills />
+          <Profile />
+          <Projects />
+          <Footer />
+        </div>
+      </div>
     </>
   );
 }

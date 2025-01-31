@@ -14,14 +14,13 @@ import Github from "../assets/hero/Github.png";
 import Linkedin from "../assets/hero/Linkedin.png";
 import resim from "../assets/hero/resim.png";
 
-export const TURKISH = "turkish";
 export const ENGLISH = "english";
 
-export const headerLanguageEng = {
-  eng: "TURKISH",
-  ekEng: "SWITCH TO ",
+export const languageEng = {
+  tr: "TÜRKÇE",
+  ekTr: "'YE GEÇ",
 };
-export const headerToggleLanguagesEng = {
+export const toggleLanguageEng = {
   engDark: "DARK MODE",
   engLight: "LIGHT MODE",
 };
@@ -41,33 +40,33 @@ export const skills = {
     {
       id: 1,
       name: "JAVASCRIPT",
-      icon: js,
+      img: js,
     },
     {
       id: 2,
       name: "REACT",
-      icon: react,
+      img: react,
     },
     {
       id: 3,
       name: "REDUX",
-      icon: redux,
+      img: redux,
     },
     {
       id: 4,
       name: "NODE",
-      icon: node,
+      img: node,
     },
 
     {
       id: 5,
       name: "VSCODE",
-      icon: vscode,
+      img: vscode,
     },
     {
       id: 6,
       name: "FIGMA",
-      icon: Figma,
+      img: Figma,
     },
   ],
 };
