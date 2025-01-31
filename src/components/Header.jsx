@@ -8,10 +8,11 @@ const Header = () => {
     useContext(UserContext);
   return (
     <div className="p-4">
-      <h1 className="text-xl font-bold">Feyza Türkay</h1>
+      <h1 className="text-2xl font-bold">Feyza Türkay</h1>
       <div>
         <label>
-          <input onClick={toggleTheme} />
+          <FontAwesomeIcon icon="fa-solid fa-toggle-on" onClick={toggleTheme} />
+          <input />
 
           {themeName}
         </label>
