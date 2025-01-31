@@ -11,8 +11,7 @@ const Header = () => {
       <h1 className="text-2xl font-bold">Feyza Türkay</h1>
       <div>
         <label>
-          <FontAwesomeIcon icon="fa-solid fa-toggle-on" onClick={toggleTheme} />
-          <input />
+          <input onClick={toggleTheme} />
 
           {themeName}
         </label>
