@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { ENGLISH, toggleLanguageEng } from "../api/dataEng";
 import { TURKCE, toggleLanguageTr } from "../api/dataTr";
@@ -6,8 +6,8 @@ import { TURKCE, toggleLanguageTr } from "../api/dataTr";
 export const UserContext = createContext();
 
 export default function UserContextProvider({ children }) {
-  const [darkMode, setDarkMode] = useLocalStorage("theme", false);
-  const [language, setLanguage] = useLocalStorage("lang", TURKCE);
+  const [darkMode, setDarkMode] = useLocalStorage("theme", true);
+  const [language, setLanguage] = useLocalStorage("lang", "tr");
 
   const [themeName, setThemeName] = useState(
     language === TURKCE ? toggleLanguageTr.trLight : toggleLanguageEng.engLight
@@ -40,6 +40,17 @@ export default function UserContextProvider({ children }) {
         : toggleLanguageEng.engLight
     );
   };
+  useEffect(() => {
+    setThemeName(
+      language === TURKCE
+        ? darkMode
+          ? toggleLanguageTr.trDark
+          : toggleLanguageTr.trLight
+        : darkMode
+        ? toggleLanguageEng.engDark
+        : toggleLanguageEng.engLight
+    );
+  }, [darkMode, language]);
 
   return (
     <UserContext.Provider

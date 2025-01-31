@@ -6,6 +6,7 @@ import Skills from "./components/Skills.jsx";
 import Projects from "./components/Projects.jsx";
 import Profile from "./components/Profile.jsx";
 import Footer from "./components/Footer.jsx";
+import Header from "./components/Header.jsx";
 function App() {
   const { darkMode, language } = useContext(UserContext);
 
@@ -23,6 +24,7 @@ function App() {
               : "bg-white text-black"
           }`}
         >
+          <Header />
           <Hero />
           <Skills />
           <Profile />
