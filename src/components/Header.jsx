@@ -19,14 +19,14 @@ const Header = () => {
       </button>
 
       {/* Language Toggle */}
-      <button
+      <label
         onClick={languageChange}
-        className="mt-2 ml-4 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-700 transition"
+        className="mt-2 ml-4 px-4 py-2 bg-green-500 text-white  hover:bg-green-700 transition"
       >
         {language === TURKCE
           ? languageEng.tr + languageEng.ekTr
           : languageTr.ekEng + languageTr.eng}
-      </button>
+      </label>
     </div>
   );
 };

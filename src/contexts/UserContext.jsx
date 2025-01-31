@@ -6,50 +6,32 @@ import { TURKCE, toggleLanguageTr } from "../api/dataTr";
 export const UserContext = createContext();
 
 export default function UserContextProvider({ children }) {
-  const [darkMode, setDarkMode] = useLocalStorage("theme", true);
+  const [darkMode, setDarkMode] = useLocalStorage("theme", false);
   const [language, setLanguage] = useLocalStorage("lang", "tr");
 
-  const [themeName, setThemeName] = useState(
-    language === TURKCE ? toggleLanguageTr.trLight : toggleLanguageEng.engLight
-  );
+  const [themeName, setThemeName] = useState("");
+
+  const updateThemeName = (darkMode, language) => {
+    if (language === TURKCE) {
+      return darkMode ? toggleLanguageEng.engLight : toggleLanguageEng.engDark;
+    } else {
+      return darkMode ? toggleLanguageTr.trLight : toggleLanguageTr.trDark;
+    }
+  };
 
   const toggleTheme = () => {
     const newDarkMode = !darkMode;
     setDarkMode(newDarkMode);
-    setThemeName(
-      language === TURKCE
-        ? newDarkMode
-          ? toggleLanguageTr.trDark
-          : toggleLanguageTr.trLight
-        : newDarkMode
-        ? toggleLanguageEng.engDark
-        : toggleLanguageEng.engLight
-    );
+    setThemeName(updateThemeName(newDarkMode, language));
   };
 
   const languageChange = () => {
     const newLanguage = language === TURKCE ? ENGLISH : TURKCE;
     setLanguage(newLanguage);
-    setThemeName(
-      newLanguage === TURKCE
-        ? darkMode
-          ? toggleLanguageTr.trDark
-          : toggleLanguageTr.trLight
-        : darkMode
-        ? toggleLanguageEng.engDark
-        : toggleLanguageEng.engLight
-    );
+    setThemeName(updateThemeName(darkMode, newLanguage));
   };
   useEffect(() => {
-    setThemeName(
-      language === TURKCE
-        ? darkMode
-          ? toggleLanguageTr.trDark
-          : toggleLanguageTr.trLight
-        : darkMode
-        ? toggleLanguageEng.engDark
-        : toggleLanguageEng.engLight
-    );
+    setThemeName(updateThemeName(darkMode, language));
   }, [darkMode, language]);
 
   return (
